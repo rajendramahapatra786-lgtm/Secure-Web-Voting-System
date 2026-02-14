@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Vote</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1828/1828919.png">
+</head>
+
+<body>
+
+    <div class="box">
+        <h2>Cast Your Vote</h2>
+
+        <button class="party-btn" onclick="vote('BJP')">
+            <span>BJP</span>
+            <img src="https://images.seeklogo.com/logo-png/2/1/bjp-logo-png_seeklogo-20002.png">
+        </button>
+
+        <button class="party-btn" onclick="vote('BJD')">
+            <span>BJD</span>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Biju_Janata_Dal_logo.svg/330px-Biju_Janata_Dal_logo.svg.png?20240329070117">
+        </button>
+
+        <button class="party-btn" onclick="vote('Congress')">
+            <span>Congress</span>
+            <img src="https://images.seeklogo.com/logo-png/46/1/indian-national-congress-logo-png_seeklogo-466896.png">
+        </button>
+
+        <p id="msg"></p>
+
+        <a href="result.html">View Results</a>
+    </div>
+
+    <script src="../js/app.js"></script>
+</body>
+
+</html>
