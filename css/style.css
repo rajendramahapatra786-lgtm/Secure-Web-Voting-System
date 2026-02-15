@@ -126,6 +126,35 @@ a:hover {
     transform: scale(1.05);
 }
 
+/* ===== Results Text ===== */
+.box h3 {
+  font-weight: 500;
+  margin: 8px 0;
+}
+
+/* percentage styling */
+.box span {
+  font-weight: bold;
+}
+
+/* winner highlight */
+.winner {
+  color: green;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* status colors */
+.progress {
+  color: orange;
+}
+
+.ended {
+  color: red;
+}
+
+
+
 /* Animation */
 @keyframes fadeIn {
     from {
@@ -143,4 +172,36 @@ a:hover {
     .box {
         width: 90%;
     }
+}
+
+/* result boxes */
+.result-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255,255,255,0.25);
+  padding: 12px 15px;
+  border-radius: 12px;
+  margin: 10px 0;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+/* percentage right side */
+.percent {
+  font-weight: bold;
+}
+
+/* winner highlight */
+.winner-box {
+  background: linear-gradient(45deg,#00f5a0,#00d9f5);
+  color: #003;
+  font-weight: bold;
+  transform: scale(1.03);
+}
+
+/* voting status */
+#statusText {
+  margin-top: 10px;
+  font-size: 15px;
 }

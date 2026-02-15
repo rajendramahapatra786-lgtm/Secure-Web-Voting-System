@@ -1,6 +1,5 @@
 // ================= INIT STORAGE =================
 
-// create vote storage if not exists
 if (!localStorage.getItem("votes")) {
     localStorage.setItem("votes", JSON.stringify({
         BJP: 0,
@@ -9,10 +8,10 @@ if (!localStorage.getItem("votes")) {
     }));
 }
 
-// create voting status
 if (!localStorage.getItem("votingStatus")) {
     localStorage.setItem("votingStatus", "ON");
 }
+
 
 // ================= LOGIN =================
 
@@ -28,11 +27,11 @@ function login() {
     window.location.href = "pages/vote.html";
 }
 
-// ================= VOTE FUNCTION =================
+
+// ================= VOTE =================
 
 function vote(candidate) {
 
-    // check if voting stopped
     if (localStorage.getItem("votingStatus") === "OFF") {
         document.getElementById("msg").innerText = "⛔ Voting has ended!";
         return;
@@ -46,62 +45,22 @@ function vote(candidate) {
         return;
     }
 
-    // prevent duplicate voting
     if (localStorage.getItem("voted_" + user)) {
         document.getElementById("msg").innerText = "You already voted!";
         return;
     }
 
     let votes = JSON.parse(localStorage.getItem("votes"));
-
-    // safe increment (future proof)
-    if (!votes[candidate]) {
-        votes[candidate] = 0;
-    }
-
     votes[candidate]++;
 
     localStorage.setItem("votes", JSON.stringify(votes));
     localStorage.setItem("voted_" + user, candidate);
 
-    document.getElementById("msg").innerText = "✅ Vote recorded successfully!";
+    document.getElementById("msg").innerText = "✅ Vote recorded!";
 }
 
-// ================= SHOW RESULTS =================
 
-if (document.getElementById("results")) {
-
-    let votes = JSON.parse(localStorage.getItem("votes"));
-    let status = localStorage.getItem("votingStatus");
-    let output = "";
-
-    if (status === "OFF") {
-
-        // find winner
-        let maxVotes = Math.max(...Object.values(votes));
-
-        for (let name in votes) {
-            if (votes[name] === maxVotes && maxVotes > 0) {
-                output += `<p style="background:#00f5a0;color:#003;font-weight:bold">
-                           🏆 ${name} : ${votes[name]}
-                           </p>`;
-            } else {
-                output += `<p>${name} : ${votes[name]}</p>`;
-            }
-        }
-
-    } else {
-        for (let name in votes) {
-            output += `<p>${name} : ${votes[name]}</p>`;
-        }
-
-        output += `<p style="margin-top:10px">🟡 Voting is still in progress...</p>`;
-    }
-
-    document.getElementById("results").innerHTML = output;
-}
-
-// ================= STOP VOTING =================
+// ================= STOP =================
 
 function stopVoting() {
     localStorage.setItem("votingStatus", "OFF");
@@ -109,29 +68,92 @@ function stopVoting() {
     location.reload();
 }
 
-// ================= RESTART VOTING =================
+
+// ================= RESTART =================
 
 function restartVoting() {
 
-    if (!confirm("Are you sure you want to restart voting?")) return;
+    if (!confirm("Restart voting?")) return;
 
-    // reset votes
     localStorage.setItem("votes", JSON.stringify({
         BJP: 0,
         BJD: 0,
         Congress: 0
     }));
 
-    // remove voted users
     for (let key in localStorage) {
         if (key.startsWith("voted_")) {
             localStorage.removeItem(key);
         }
     }
 
-    // enable voting again
     localStorage.setItem("votingStatus", "ON");
 
     alert("Voting restarted!");
     location.reload();
+}
+
+
+
+// ================= LIVE RESULTS =================
+
+function updateResults() {
+
+    const votes = JSON.parse(localStorage.getItem("votes"));
+    const status = localStorage.getItem("votingStatus");
+
+    const bjpVotes = document.getElementById("bjpVotes");
+    const bjdVotes = document.getElementById("bjdVotes");
+    const conVotes = document.getElementById("conVotes");
+
+    const bjpPercent = document.getElementById("bjpPercent");
+    const bjdPercent = document.getElementById("bjdPercent");
+    const conPercent = document.getElementById("conPercent");
+
+    const bjpBox = document.getElementById("bjpBox");
+    const bjdBox = document.getElementById("bjdBox");
+    const conBox = document.getElementById("conBox");
+
+    const statusText = document.getElementById("statusText");
+
+    let total = votes.BJP + votes.BJD + votes.Congress;
+    if (total === 0) total = 1;
+
+    // numbers
+    bjpVotes.textContent = votes.BJP;
+    bjdVotes.textContent = votes.BJD;
+    conVotes.textContent = votes.Congress;
+
+    // percentages
+    bjpPercent.textContent = ((votes.BJP / total) * 100).toFixed(1) + "%";
+    bjdPercent.textContent = ((votes.BJD / total) * 100).toFixed(1) + "%";
+    conPercent.textContent = ((votes.Congress / total) * 100).toFixed(1) + "%";
+
+    // remove old winner highlight
+    document.querySelectorAll(".result-box").forEach(box =>
+        box.classList.remove("winner-box")
+    );
+
+    // detect winner
+    let maxVotes = Math.max(votes.BJP, votes.BJD, votes.Congress);
+
+    if (status === "OFF" && maxVotes > 0) {
+
+        if (votes.BJP === maxVotes) bjpBox.classList.add("winner-box");
+        if (votes.BJD === maxVotes) bjdBox.classList.add("winner-box");
+        if (votes.Congress === maxVotes) conBox.classList.add("winner-box");
+
+        statusText.innerHTML = "🏆 Voting finished";
+    }
+    else {
+        statusText.innerHTML = "🟡 Voting is still in progress...";
+    }
+}
+
+
+// ================= RUN ONLY ON RESULT PAGE =================
+
+if (document.getElementById("bjpVotes")) {
+    updateResults();
+    setInterval(updateResults, 1000);
 }

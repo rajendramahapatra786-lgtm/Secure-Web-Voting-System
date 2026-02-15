@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Results</title>
+    <title>Voting Results</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1828/1828919.png">
 </head>
@@ -11,10 +11,32 @@
 
     <div class="box">
         <h2>Voting Results</h2>
-        <div id="results"></div>
+
+        <!-- RESULT BOXES -->
+        <div class="result-box" id="bjpBox">
+            <span>BJP : <b id="bjpVotes">0</b></span>
+            <span class="percent" id="bjpPercent">0%</span>
+        </div>
+
+        <div class="result-box" id="bjdBox">
+            <span>BJD : <b id="bjdVotes">0</b></span>
+            <span class="percent" id="bjdPercent">0%</span>
+        </div>
+
+        <div class="result-box" id="conBox">
+            <span>Congress : <b id="conVotes">0</b></span>
+            <span class="percent" id="conPercent">0%</span>
+        </div>
+
+        <!-- STATUS MESSAGE -->
+        <p id="statusText"></p>
+
+        <br>
+
         <button onclick="stopVoting()">Stop Voting</button>
         <button onclick="restartVoting()">Restart Voting</button>
-        <br>
+
+        <br><br>
         <a href="../index.html">Back to Login</a>
     </div>
 
