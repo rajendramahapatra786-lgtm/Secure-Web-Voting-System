@@ -28,6 +28,69 @@ function login() {
 }
 
 
+// ================= ADMIN LOGIN =================
+
+function adminLogin() {
+    const password = prompt("Enter Admin Password:");
+
+    if (password === "admin123") {
+        document.getElementById("adminPanel").style.display = "block";
+        alert("Admin access granted");
+    } else {
+        alert("Wrong password");
+    }
+}
+
+
+// ================= TOGGLE VOTING =================
+
+function toggleVoting() {
+
+    let status = localStorage.getItem("votingStatus");
+
+    if (status === "ON") {
+        localStorage.setItem("votingStatus", "OFF");
+        alert("🚫 Voting CLOSED");
+    } else {
+        localStorage.setItem("votingStatus", "ON");
+        alert("✅ Voting OPEN");
+    }
+
+    location.reload();
+}
+
+
+// ================= SHOW VOTING STATUS =================
+
+function showVotingStatus() {
+    const status = localStorage.getItem("votingStatus");
+    const msg = document.getElementById("statusMessage");
+
+    if (!msg) return;
+
+    if (status === "OFF") {
+        msg.innerText = "🚫 Voting is CLOSED";
+        msg.style.color = "red";
+
+        // ✅ disable voting buttons visually
+        document.querySelectorAll(".party-btn").forEach(btn =>
+            btn.classList.add("closed")
+        );
+
+    } else {
+        msg.innerText = "✅ Voting is OPEN";
+        msg.style.color = "green";
+
+        // ✅ enable buttons again
+        document.querySelectorAll(".party-btn").forEach(btn =>
+            btn.classList.remove("closed")
+        );
+    }
+}
+
+window.onload = showVotingStatus;
+
+
 // ================= VOTE =================
 
 function vote(candidate) {
@@ -60,16 +123,7 @@ function vote(candidate) {
 }
 
 
-// ================= STOP =================
-
-function stopVoting() {
-    localStorage.setItem("votingStatus", "OFF");
-    alert("Voting stopped!");
-    location.reload();
-}
-
-
-// ================= RESTART =================
+// ================= RESTART VOTING =================
 
 function restartVoting() {
 

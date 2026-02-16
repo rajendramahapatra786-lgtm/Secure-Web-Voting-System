@@ -205,3 +205,37 @@ a:hover {
   margin-top: 10px;
   font-size: 15px;
 }
+
+/* ===== Admin Panel Styling ===== */
+
+.admin-btn {
+  background: rgba(0,0,0,0.35);
+  color: #fff;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.admin-btn:hover {
+  background: rgba(0,0,0,0.6);
+}
+
+/* admin panel buttons spacing */
+#adminPanel button {
+  margin-top: 8px;
+}
+
+/* ===== Voting Status Message ===== */
+
+#statusMessage {
+  margin-top: 10px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* ===== CLOSED voting visual feedback ===== */
+
+.closed {
+  opacity: 0.6;
+  pointer-events: none;
+  filter: grayscale(40%);
+}
