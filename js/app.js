@@ -33,7 +33,8 @@ function login() {
 function adminLogin() {
     const password = prompt("Enter Admin Password:");
 
-    if (password === "admin123") {
+    const ADMIN_PASS = "admin123";
+    if (password === ADMIN_PASS) {
         document.getElementById("adminPanel").style.display = "block";
         alert("Admin access granted");
     } else {
@@ -86,7 +87,15 @@ function showVotingStatus() {
             btn.classList.remove("closed")
         );
     }
+    // ✅ disable buttons if already voted
+    const user = localStorage.getItem("currentUser");
+    if (localStorage.getItem("voted_" + user)) {
+        document.querySelectorAll(".party-btn").forEach(btn =>
+            btn.disabled = true
+        );
+    }
 }
+
 
 window.onload = showVotingStatus;
 
@@ -114,12 +123,20 @@ function vote(candidate) {
     }
 
     let votes = JSON.parse(localStorage.getItem("votes"));
-    votes[candidate]++;
+    if (votes[candidate] !== undefined) {
+        votes[candidate]++;
+    }
 
     localStorage.setItem("votes", JSON.stringify(votes));
     localStorage.setItem("voted_" + user, candidate);
 
     document.getElementById("msg").innerText = "✅ Vote recorded!";
+
+
+    // ✅ DISABLE BUTTONS AFTER VOTE
+    document.querySelectorAll(".party-btn").forEach(btn =>
+        btn.disabled = true
+    );
 }
 
 
@@ -209,5 +226,5 @@ function updateResults() {
 
 if (document.getElementById("bjpVotes")) {
     updateResults();
-    setInterval(updateResults, 1000);
+    window.addEventListener("storage", updateResults);
 }

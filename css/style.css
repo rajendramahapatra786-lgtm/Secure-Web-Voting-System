@@ -239,3 +239,9 @@ a:hover {
   pointer-events: none;
   filter: grayscale(40%);
 }
+
+.party-btn:disabled{
+    opacity:0.5;
+    cursor:not-allowed;
+    transform:none;
+}
