@@ -129,6 +129,8 @@ function vote(candidate) {
 
     localStorage.setItem("votes", JSON.stringify(votes));
     localStorage.setItem("voted_" + user, candidate);
+    const mobile = localStorage.getItem("currentMobile");
+    localStorage.setItem("votedMobile_" + mobile, "yes");
 
     document.getElementById("msg").innerText = "✅ Vote recorded!";
 
@@ -153,7 +155,7 @@ function restartVoting() {
     }));
 
     for (let key in localStorage) {
-        if (key.startsWith("voted_")) {
+        if (key.startsWith("voted_") || key.startsWith("votedMobile_")) {
             localStorage.removeItem(key);
         }
     }
@@ -227,4 +229,48 @@ function updateResults() {
 if (document.getElementById("bjpVotes")) {
     updateResults();
     window.addEventListener("storage", updateResults);
+}
+
+let generatedOTP;
+
+function sendOTP() {
+
+    const user = document.getElementById("username").value.trim();
+    const mobile = document.getElementById("mobile").value.trim();
+
+    if (user === "" || mobile === "") {
+        document.getElementById("msg").innerText = "Enter name & mobile";
+        return;
+    }
+
+    // ✅ CHECK IF USER ALREADY VOTED
+    if (localStorage.getItem("votedMobile_" + mobile)) {
+        alert("You already voted!");
+        return;
+    }
+
+    // generate OTP
+    generatedOTP = Math.floor(1000 + Math.random() * 9000);
+
+    alert("OTP: " + generatedOTP); // demo OTP
+
+    document.getElementById("otpBox").style.display = "block";
+}
+
+function verifyOTP() {
+
+    const enteredOTP = document.getElementById("otp").value;
+    const mobile = document.getElementById("mobile").value.trim();
+    const user = document.getElementById("username").value.trim();
+
+    if (enteredOTP == generatedOTP) {
+
+        localStorage.setItem("currentUser", user);
+        localStorage.setItem("currentMobile", mobile);
+
+        window.location.href = "pages/vote.html";
+
+    } else {
+        alert("Wrong OTP");
+    }
 }
