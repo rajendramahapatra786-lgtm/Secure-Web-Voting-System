@@ -233,6 +233,7 @@ if (document.getElementById("bjpVotes")) {
 
 let generatedOTP;
 
+
 function sendOTP() {
 
     const user = document.getElementById("username").value.trim();
@@ -252,9 +253,10 @@ function sendOTP() {
     // generate OTP
     generatedOTP = Math.floor(1000 + Math.random() * 9000);
 
-    alert("OTP: " + generatedOTP); // demo OTP
+    document.getElementById("msg").innerText =
+        "🔐 Demo OTP: " + generatedOTP;
 
-    document.getElementById("otpBox").style.display = "block";
+    document.getElementById("otpBox").classList.add("show");
 }
 
 function verifyOTP() {

@@ -1,27 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login</title>
+    <title>Voting Login</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1828/1828919.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 </head>
 <body>
 
 <div class="box">
-    <h2>Voting Login</h2>
+    <h2>🗳️ Voting Login</h2>
+    <p class="subtitle">Secure Access Portal</p>
 
-    <input type="text" id="username" placeholder="Enter username">
-    <input type="text" id="mobile" placeholder="Enter mobile number">
+    <div class="input-group">
+        <i class="fa fa-user"></i>
+        <input type="text" id="username" placeholder="Username">
+    </div>
+
+    <div class="input-group">
+        <i class="fa fa-phone"></i>
+        <input type="tel" id="mobile" placeholder="Mobile Number">
+    </div>
 
     <button onclick="sendOTP()">Send OTP</button>
 
-    <div id="otpBox" style="display:none;">
-        <input type="text" id="otp" placeholder="Enter OTP">
+    <div id="otpBox" class="otp-box">
+        <div class="input-group">
+            <i class="fa fa-lock"></i>
+            <input type="text" id="otp" placeholder="Enter OTP">
+        </div>
         <button onclick="verifyOTP()">Verify OTP</button>
     </div>
 
     <p id="msg"></p>
 </div>
+<footer class="footer">
+    © Developed by Rajendra
+</footer>
 <script src="js/app.js"></script>
 </body>
 </html>

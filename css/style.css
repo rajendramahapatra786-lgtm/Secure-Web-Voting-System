@@ -245,3 +245,100 @@ a:hover {
     cursor:not-allowed;
     transform:none;
 }
+
+/* subtitle */
+.subtitle{
+    font-size:13px;
+    opacity:0.85;
+    margin-bottom:15px;
+}
+
+/* input with icons */
+.input-group{
+    display:flex;
+    align-items:center;
+    background: rgba(255,255,255,0.2);
+    border-radius:10px;
+    padding:10px;
+    margin:10px 0;
+}
+
+.input-group i{
+    margin-right:8px;
+    color:#fff;
+    font-size:14px;
+}
+
+.input-group input{
+    background:transparent;
+    border:none;
+    outline:none;
+    color:#fff;
+    width:100%;
+    font-size:14px;
+}
+
+/* placeholder color */
+::placeholder{
+    color:#eee;
+}
+
+/* focus glow */
+.input-group:focus-within{
+    box-shadow:0 0 0 2px rgba(255,255,255,0.4);
+    transform: scale(1.02);
+    transition:0.2s;
+}
+
+/* OTP animation */
+.otp-box{
+    display:none;
+    animation:fadeIn 0.5s ease;
+}
+
+.otp-box{
+    display:none;
+}
+
+.otp-box.show{
+    display:block;
+}
+
+/* modern button glow */
+button{
+    position:relative;
+    overflow:hidden;
+}
+
+button::after{
+    content:'';
+    position:absolute;
+    width:0;
+    height:100%;
+    left:0;
+    top:0;
+    background:rgba(255,255,255,0.3);
+    transition:0.3s;
+}
+
+button:hover::after{
+    width:100%;
+}
+
+.footer{
+    position: fixed;
+    bottom: 15px;
+    width: 100%;
+    text-align: center;
+    color: rgba(255,255,255,0.85);
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+
+.footer strong{
+    color: #00f5a0;
+}
+
+body{
+    padding-bottom: 40px;
+}
