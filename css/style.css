@@ -1,263 +1,84 @@
+/* =================================================
+   🌐 GLOBAL SETTINGS
+================================================= */
+
 /* Google Font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-* {
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+*{
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
 }
 
 /* Background */
-body {
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    background: linear-gradient(135deg, #667eea, #764ba2);
-}
-
-/* Glass Card */
-.box {
-    width: 320px;
-    padding: 35px 25px;
-    border-radius: 20px;
-
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(12px);
-
-    text-align: center;
-    color: white;
-
-    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-    animation: fadeIn 0.6s ease-in-out;
-}
-
-/* Title */
-h2 {
-    margin-bottom: 20px;
-    font-weight: 600;
-}
-
-/* Inputs */
-input {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border-radius: 8px;
-    border: none;
-    outline: none;
-    font-size: 14px;
-}
-
-/* Buttons */
-button {
-    width: 100%;
-    padding: 12px;
-    margin-top: 12px;
-    border: none;
-    border-radius: 10px;
-    background: linear-gradient(45deg, #00f5a0, #00d9f5);
-    color: #003;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-/* Hover animation */
-button:hover {
-    transform: translateY(-2px) scale(1.03);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.3);
-}
-
-/* Links */
-a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 14px;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-/* Messages */
-#msg {
-    margin-top: 10px;
-    font-size: 14px;
-}
-
-/* Results text */
-#results p {
-    background: rgba(255,255,255,0.2);
-    padding: 8px;
-    border-radius: 8px;
-    margin: 6px 0;
-}
-
-.party-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-
-    width: 100%;
-    padding: 12px;
-    margin: 12px 0;
-
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-
-    background: linear-gradient(45deg, #00f5a0, #00d9f5);
-    font-weight: 600;
-    font-size: 16px;
-}
-
-/* logo size */
-.party-btn img {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
-}
-
-/* hover effect */
-.party-btn:hover {
-    transform: scale(1.05);
-}
-
-/* ===== Results Text ===== */
-.box h3 {
-  font-weight: 500;
-  margin: 8px 0;
-}
-
-/* percentage styling */
-.box span {
-  font-weight: bold;
-}
-
-/* winner highlight */
-.winner {
-  color: green;
-  font-weight: bold;
-  font-size: 18px;
-}
-
-/* status colors */
-.progress {
-  color: orange;
-}
-
-.ended {
-  color: red;
+body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#667eea,#764ba2);
+    padding-bottom:40px;
 }
 
 
 
-/* Animation */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* =================================================
+   📦 GLASS CARD CONTAINER
+================================================= */
+
+.box{
+    width:320px;
+    max-width:95%;
+    padding:35px 25px;
+    border-radius:20px;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(12px);
+    text-align:center;
+    color:white;
+    box-shadow:0 8px 32px rgba(0,0,0,0.25);
+    animation:fadeIn .6s ease-in-out;
 }
 
-/* Mobile responsive */
-@media(max-width: 400px) {
-    .box {
-        width: 90%;
-    }
+
+
+/* =================================================
+   📝 TEXT & TITLES
+================================================= */
+
+h2{
+    margin-bottom:20px;
+    font-weight:600;
 }
 
-/* result boxes */
-.result-box {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(255,255,255,0.25);
-  padding: 12px 15px;
-  border-radius: 12px;
-  margin: 10px 0;
-  font-size: 16px;
-  transition: 0.3s;
-}
-
-/* percentage right side */
-.percent {
-  font-weight: bold;
-}
-
-/* winner highlight */
-.winner-box {
-  background: linear-gradient(45deg,#00f5a0,#00d9f5);
-  color: #003;
-  font-weight: bold;
-  transform: scale(1.03);
-}
-
-/* voting status */
-#statusText {
-  margin-top: 10px;
-  font-size: 15px;
-}
-
-/* ===== Admin Panel Styling ===== */
-
-.admin-btn {
-  background: rgba(0,0,0,0.35);
-  color: #fff;
-  font-size: 14px;
-  margin-top: 5px;
-}
-
-.admin-btn:hover {
-  background: rgba(0,0,0,0.6);
-}
-
-/* admin panel buttons spacing */
-#adminPanel button {
-  margin-top: 8px;
-}
-
-/* ===== Voting Status Message ===== */
-
-#statusMessage {
-  margin-top: 10px;
-  font-weight: 600;
-  letter-spacing: 0.3px;
-}
-
-/* ===== CLOSED voting visual feedback ===== */
-
-.closed {
-  opacity: 0.6;
-  pointer-events: none;
-  filter: grayscale(40%);
-}
-
-.party-btn:disabled{
-    opacity:0.5;
-    cursor:not-allowed;
-    transform:none;
-}
-
-/* subtitle */
 .subtitle{
     font-size:13px;
-    opacity:0.85;
+    opacity:.85;
     margin-bottom:15px;
 }
 
-/* input with icons */
+#msg{
+    margin-top:10px;
+    font-size:14px;
+}
+
+a{
+    color:#fff;
+    text-decoration:none;
+    font-size:14px;
+}
+a:hover{ text-decoration:underline; }
+
+
+
+/* =================================================
+   🧾 INPUT FIELDS
+================================================= */
+
 .input-group{
     display:flex;
     align-items:center;
-    background: rgba(255,255,255,0.2);
+    background:rgba(255,255,255,0.2);
     border-radius:10px;
     padding:10px;
     margin:10px 0;
@@ -278,36 +99,38 @@ a:hover {
     font-size:14px;
 }
 
-/* placeholder color */
-::placeholder{
-    color:#eee;
-}
+::placeholder{ color:#eee; }
 
-/* focus glow */
 .input-group:focus-within{
     box-shadow:0 0 0 2px rgba(255,255,255,0.4);
-    transform: scale(1.02);
-    transition:0.2s;
+    transform:scale(1.02);
+    transition:.2s;
 }
 
-/* OTP animation */
-.otp-box{
-    display:none;
-    animation:fadeIn 0.5s ease;
-}
 
-.otp-box{
-    display:none;
-}
 
-.otp-box.show{
-    display:block;
-}
+/* =================================================
+   🔘 BUTTONS
+================================================= */
 
-/* modern button glow */
 button{
+    width:100%;
+    padding:12px;
+    margin-top:12px;
+    border:none;
+    border-radius:10px;
+    background:linear-gradient(45deg,#00f5a0,#00d9f5);
+    color:#003;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
     position:relative;
     overflow:hidden;
+}
+
+button:hover{
+    transform:translateY(-2px) scale(1.03);
+    box-shadow:0 6px 18px rgba(0,0,0,0.3);
 }
 
 button::after{
@@ -318,27 +141,211 @@ button::after{
     left:0;
     top:0;
     background:rgba(255,255,255,0.3);
-    transition:0.3s;
+    transition:.3s;
+}
+button:hover::after{ width:100%; }
+
+
+
+/* =================================================
+   🗳️ PARTY BUTTONS
+================================================= */
+
+.party-btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    width:100%;
+    padding:12px;
+    margin:12px 0;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    background:linear-gradient(45deg,#00f5a0,#00d9f5);
+    font-weight:600;
+    font-size:16px;
 }
 
-button:hover::after{
+.party-btn img{
+    width:40px;
+    height:40px;
+    object-fit:contain;
+}
+
+.party-btn:hover{ transform:scale(1.05); }
+
+.party-btn:disabled{
+    opacity:.5;
+    cursor:not-allowed;
+    transform:none;
+}
+
+.closed{
+    opacity:.6;
+    pointer-events:none;
+    filter:grayscale(40%);
+}
+
+
+
+/* =================================================
+   📊 RESULT PAGE
+================================================= */
+
+.result-box{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(255,255,255,0.25);
+    padding:12px 15px;
+    border-radius:12px;
+    margin:10px 0;
+    font-size:16px;
+}
+
+.percent{ font-weight:bold; }
+
+.winner-box{
+    background:linear-gradient(45deg,#00f5a0,#00d9f5);
+    color:#003;
+    font-weight:bold;
+    transform:scale(1.03);
+}
+
+#statusText{ margin-top:10px; }
+
+
+
+/* =================================================
+   ⚙️ ADMIN PANEL
+================================================= */
+
+.admin-btn{
+    background:rgba(0,0,0,0.35);
+    color:#fff;
+    font-size:14px;
+    margin-top:5px;
+}
+
+.admin-btn:hover{
+    background:rgba(0,0,0,0.6);
+}
+
+#statusMessage{
+    margin-top:10px;
+    font-weight:600;
+}
+
+
+
+/* =================================================
+   🔐 OTP BOX
+================================================= */
+
+.otp-box{ display:none; }
+.otp-box.show{ display:block; }
+
+
+
+/* =================================================
+   📋 MANAGE VOTERS TABLE
+================================================= */
+
+.table-box{
     width:100%;
 }
 
+/* table */
+.voter-table{
+    width:100%;
+    border-collapse:collapse;
+    background:rgba(255,255,255,0.12);
+    table-layout:fixed;   /* ⭐ keeps table balanced */
+}
+
+/* cells */
+.voter-table th,
+.voter-table td{
+    padding:10px;
+    text-align:center;
+    border-bottom:1px solid rgba(255,255,255,0.2);
+    font-size:14px;
+}
+
+/* header */
+.voter-table th{
+    background:rgba(255,255,255,0.2);
+    font-weight:bold;
+}
+
+.voter-table{
+    width:100%;
+    border-collapse:collapse;
+    background: rgba(255,255,255,0.12);
+}
+
+.voter-table th,
+.voter-table td{
+    padding:12px 20px;
+    text-align:center;
+    border-bottom:1px solid rgba(255,255,255,0.2);
+    white-space: nowrap;
+}
+
+/* ===== MANAGE PAGE WIDE LAYOUT ===== */
+
+.manage-box{
+    width: 900px;     /* ⭐ wide horizontal layout */
+    max-width: 95%;
+    padding: 30px;
+    backdrop-filter: blur(20px);
+}
+
+/* =================================================
+   📱 MOBILE RESPONSIVE
+================================================= */
+
+@media(max-width:400px){
+    .box{ width:90%; }
+}
+
+
+
+/* =================================================
+   ✨ ANIMATION
+================================================= */
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(15px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+
+
+/* =================================================
+   🧾 FOOTER
+================================================= */
+
 .footer{
-    position: fixed;
-    bottom: 15px;
-    width: 100%;
-    text-align: center;
-    color: rgba(255,255,255,0.85);
-    font-size: 14px;
-    letter-spacing: 0.5px;
+    position:fixed;
+    bottom:15px;
+    width:100%;
+    text-align:center;
+    color:rgba(255,255,255,0.85);
+    font-size:14px;
 }
 
-.footer strong{
-    color: #00f5a0;
-}
-
-body{
-    padding-bottom: 40px;
+/*===============================================
+  🎊  confetti canvas
+================================================= */
+#confetti{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    display:none;
+    z-index:999;
 }
