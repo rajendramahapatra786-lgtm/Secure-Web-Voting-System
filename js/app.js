@@ -1,17 +1,3 @@
-// ======================================================
-// 🗳️ SECURE WEB VOTING SYSTEM - FINAL SCRIPT
-// ======================================================
-// ✔ Vote counting
-// ✔ OTP login
-// ✔ Prevent duplicate voting
-// ✔ Admin controls
-// ✔ Manage voters page
-// ✔ Delete voters & update counts
-// ✔ Results page auto update
-// ======================================================
-
-
-
 // ================= INIT STORAGE =================
 
 // vote counts
@@ -35,7 +21,7 @@ if (!localStorage.getItem("votingStatus")) {
 
 
 
-// ================= USER LOGIN =================
+// ================= USER LOGIN =============================
 
 function login() {
     const user = document.getElementById("username").value.trim();
@@ -45,12 +31,25 @@ function login() {
         return;
     }
 
+    // ✅ name validation
+    if (!/^[A-Za-z ]+$/.test(user)) {
+        document.getElementById("msg").innerText = "Name must contain only letters";
+        return;
+    }
+
     localStorage.setItem("currentUser", user);
     window.location.href = "pages/vote.html";
 }
+// allow only letters & spaces in username while typing
+document.addEventListener("DOMContentLoaded", () => {
+    const nameInput = document.getElementById("username");
 
-
-
+    if (nameInput) {
+        nameInput.addEventListener("input", function () {
+            this.value = this.value.replace(/[^A-Za-z ]/g, '');
+        });
+    }
+});
 // ================= ADMIN LOGIN =================
 
 function adminLogin() {
