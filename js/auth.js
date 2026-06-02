@@ -77,8 +77,8 @@ function sendOTP() {
 
     // prevent duplicate voting
     if (localStorage.getItem("votedMobile_" + mobile)) {
-        alert("You already voted!");
-        return;
+        showToast("You already voted!", "warning");
+         return;
     }
 
     // generate OTP
@@ -104,6 +104,6 @@ function verifyOTP() {
         window.location.href = "pages/vote.html";
 
     } else {
-        alert("Wrong OTP");
+        showToast("Wrong OTP", "error");
     }
 }

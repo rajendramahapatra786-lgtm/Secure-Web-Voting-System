@@ -349,3 +349,123 @@ button:hover::after{ width:100%; }
     display:none;
     z-index:999;
 }
+
+/* ================= TOAST ================= */
+
+#toastContainer {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+.toast {
+    background: rgba(0,0,0,0.9);
+    color: #00ffff;
+    border-left: 4px solid #00ffff;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    min-width: 250px;
+    box-shadow: 0 0 15px rgba(0,255,255,0.4);
+    animation: slideIn 0.4s ease;
+    font-weight: bold;
+    transition: all 0.5s ease;
+}
+
+.toast.success {
+    border-color: #00ff00;
+    color: #00ff00;
+}
+
+.toast.error {
+    border-color: #ff0033;
+    color: #ff0033;
+}
+
+.toast.warning {
+    border-color: #ffaa00;
+    color: #ffaa00;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    to {
+        opacity: 0;
+        transform: translateX(120%);
+    }
+}
+
+/* ================= MODAL ================= */
+
+.custom-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+.modal-box {
+    background: #111;
+    border: 2px solid #00ffff;
+    padding: 30px;
+    width: 350px;
+    border-radius: 10px;
+    box-shadow: 0 0 25px rgba(0,255,255,0.5);
+    text-align: center;
+}
+
+.modal-box h3 {
+    color: #00ffff;
+    margin-bottom: 15px;
+}
+
+.modal-box p {
+    color: white;
+    margin-bottom: 20px;
+}
+
+.modal-box input {
+    width: 100%;
+    padding: 10px;
+    background: #000;
+    border: 1px solid #00ffff;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.modal-buttons button {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#modalOkBtn {
+    background: #00ffff;
+}
+
+#modalCancelBtn {
+    background: #ff0033;
+    color: white;
+}

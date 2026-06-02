@@ -12,10 +12,10 @@ function toggleVoting() {
 
     if (status === "ON") {
         localStorage.setItem("votingStatus", "OFF");
-        alert("🚫 Voting CLOSED");
+        showToast("🚫 Voting CLOSED", "warning");
     } else {
         localStorage.setItem("votingStatus", "ON");
-        alert("✅ Voting OPEN");
+        showToast("✅ Voting OPEN", "success");
     }
 
     location.reload();
@@ -64,7 +64,7 @@ function vote(candidate) {
     const mobile = localStorage.getItem("currentMobile");
 
     if (!user) {
-        alert("Please login first");
+        showToast("Please login first", "error");
         window.location.href = "../index.html";
         return;
     }

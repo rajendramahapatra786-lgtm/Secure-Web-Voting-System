@@ -59,7 +59,7 @@ function deleteSelected() {
     localStorage.setItem("voterList", JSON.stringify(list));
     localStorage.setItem("votes", JSON.stringify(votes));
 
-    alert("Selected voters removed ✅");
+    showToast("Selected voters removed ✅", "success");
     location.reload();
 }
 
@@ -86,7 +86,8 @@ function restartVoting() {
 
     localStorage.setItem("votingStatus", "ON");
 
-    alert("Voting restarted!");
+    showToast("Voting restarted!", "success");
+    
     location.reload();
 }
 

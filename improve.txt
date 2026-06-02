@@ -1,29 +1,6 @@
 
 
-2️⃣ Too Many alert() and prompt() ❌
 
-Current:
-
-alert("Wrong password")
-prompt("Enter Admin Password")
-
-Problem:
-❌ Looks outdated
-❌ Poor user experience
-❌ Not modern UI
-
-✅ UPGRADE
-
-Create:
-
-✅ Custom modal popup
-✅ Toast notifications
-✅ Animated alerts
-✅ Custom admin login modal
-
-This alone will massively improve professionalism.
-
----
 
 3️⃣ Admin Password Hardcoded ❌
 
