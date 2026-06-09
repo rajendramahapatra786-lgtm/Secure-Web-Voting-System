@@ -2,11 +2,9 @@
 
 function updateResults() {
 
-    const votes = JSON.parse(localStorage.getItem("votes")) || {
-        BJP: 0, BJD: 0, Congress: 0
-    };
+    const votes = getVotes();
 
-    const status = localStorage.getItem("votingStatus");
+    const status = getVotingStatus();
 
     const bjpVotes = document.getElementById("bjpVotes");
     const bjdVotes = document.getElementById("bjdVotes");

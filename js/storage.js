@@ -1,20 +1,47 @@
 // ================= INIT STORAGE =================
 
-// vote counts
-if (!localStorage.getItem("votes")) {
-    localStorage.setItem("votes", JSON.stringify({
+function getVotes() {
+    return JSON.parse(localStorage.getItem("votes")) || {
         BJP: 0,
         BJD: 0,
         Congress: 0
-    }));
+    };
 }
 
-// store individual voters
+function saveVotes(votes) {
+    localStorage.setItem("votes", JSON.stringify(votes));
+}
+
+function getVoterList() {
+    return JSON.parse(localStorage.getItem("voterList")) || [];
+}
+
+function saveVoterList(list) {
+    localStorage.setItem("voterList", JSON.stringify(list));
+}
+
+function getVotingStatus() {
+    return localStorage.getItem("votingStatus") || "ON";
+}
+
+function setVotingStatus(status) {
+    localStorage.setItem("votingStatus", status);
+}
+
+// ================= FIRST RUN INITIALIZATION =================
+
+if (!localStorage.getItem("votes")) {
+    saveVotes({
+        BJP: 0,
+        BJD: 0,
+        Congress: 0
+    });
+}
+
 if (!localStorage.getItem("voterList")) {
-    localStorage.setItem("voterList", JSON.stringify([]));
+    saveVoterList([]);
 }
 
-// voting status
 if (!localStorage.getItem("votingStatus")) {
-    localStorage.setItem("votingStatus", "ON");
+    setVotingStatus("ON");
 }

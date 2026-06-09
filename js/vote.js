@@ -8,13 +8,13 @@ function openManagePage() {
 
 function toggleVoting() {
 
-    let status = localStorage.getItem("votingStatus");
+    let status = getVotingStatus();
 
     if (status === "ON") {
-        localStorage.setItem("votingStatus", "OFF");
+        setVotingStatus("OFF");
         showToast("🚫 Voting CLOSED", "warning");
     } else {
-        localStorage.setItem("votingStatus", "ON");
+        setVotingStatus("ON"); 
         showToast("✅ Voting OPEN", "success");
     }
 
@@ -27,7 +27,7 @@ function toggleVoting() {
 
 function showVotingStatus() {
 
-    const status = localStorage.getItem("votingStatus");
+    const status = getVotingStatus();
     const msg = document.getElementById("statusMessage");
 
     if (!msg) return;
@@ -55,7 +55,7 @@ window.onload = showVotingStatus;
 
 function vote(candidate) {
 
-    if (localStorage.getItem("votingStatus") === "OFF") {
+    if (getVotingStatus() === "OFF") {
         document.getElementById("msg").innerText = "⛔ Voting has ended!";
         return;
     }
@@ -75,15 +75,16 @@ function vote(candidate) {
     }
 
     // update vote count
-    let votes = JSON.parse(localStorage.getItem("votes"));
+    let votes = getVotes();
+
     votes[candidate]++;
 
-    localStorage.setItem("votes", JSON.stringify(votes));
+    saveVotes(votes);
     localStorage.setItem("voted_" + user, candidate);
     localStorage.setItem("votedMobile_" + mobile, "yes");
 
     // store voter info for admin page
-    let voterList = JSON.parse(localStorage.getItem("voterList"));
+    let voterList = getVoterList();
 
     voterList.push({
         user: user,
@@ -92,7 +93,7 @@ function vote(candidate) {
         time: new Date().toLocaleString()
     });
 
-    localStorage.setItem("voterList", JSON.stringify(voterList));
+    saveVoterList(voterList);
 
     document.getElementById("msg").innerText = "✅ Vote recorded!";
 

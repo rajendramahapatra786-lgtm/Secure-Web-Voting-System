@@ -5,7 +5,7 @@ function loadVoters() {
     const body = document.getElementById("voterTableBody");
     if (!body) return;
 
-    let list = JSON.parse(localStorage.getItem("voterList")) || [];
+    let list = getVoterList();
 
     if (list.length === 0) {
         body.innerHTML = "<tr><td colspan='6'>No voters found</td></tr>";
@@ -39,8 +39,8 @@ function deleteSelected() {
 
     if (!confirm("Delete selected voters?")) return;
 
-    let list = JSON.parse(localStorage.getItem("voterList"));
-    let votes = JSON.parse(localStorage.getItem("votes"));
+    let list = getVoterList();
+    let votes = getVotes();
 
     const selected = document.querySelectorAll(".voterCheck:checked");
 
@@ -56,8 +56,8 @@ function deleteSelected() {
 
     list = list.filter(v => v !== null);
 
-    localStorage.setItem("voterList", JSON.stringify(list));
-    localStorage.setItem("votes", JSON.stringify(votes));
+    saveVoterList(list);
+    saveVotes(votes);
 
     showToast("Selected voters removed ✅", "success");
     location.reload();
@@ -70,24 +70,23 @@ function restartVoting() {
 
     if (!confirm("Restart voting?")) return;
 
-    localStorage.setItem("votes", JSON.stringify({
+    saveVotes({
         BJP: 0,
         BJD: 0,
         Congress: 0
-    }));
+    });
 
-    localStorage.setItem("voterList", JSON.stringify([]));
-
+    saveVoterList([]);
     for (let key in localStorage) {
         if (key.startsWith("voted_") || key.startsWith("votedMobile_")) {
             localStorage.removeItem(key);
         }
     }
 
-    localStorage.setItem("votingStatus", "ON");
+    setVotingStatus("ON");
 
     showToast("Voting restarted!", "success");
-    
+
     location.reload();
 }
 

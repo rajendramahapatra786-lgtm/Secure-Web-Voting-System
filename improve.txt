@@ -2,49 +2,7 @@
 
 
 
-3️⃣ Admin Password Hardcoded ❌
 
-Current:
-
-if (password === "admin123")
-
-Problem:
-❌ Very insecure
-❌ Easy to bypass
-❌ Visible in source code
-
-✅ BETTER
-
-Store encrypted password
-OR
-move admin authentication to backend later.
-
----
-
-4️⃣ Repeated localStorage Logic ❌
-
-You repeatedly use:
-
-JSON.parse(localStorage.getItem())
-
-Problem:
-❌ Duplicate code
-❌ Hard to update later
-❌ Bad maintainability
-
-✅ BETTER
-
-Create:
-
-function getVotes() {}
-function saveVotes() {}
-
-function getVoters() {}
-function saveVoters() {}
-
-Reusable architecture.
-
----
 
 5️⃣ Repeated DOM Queries ❌
 
