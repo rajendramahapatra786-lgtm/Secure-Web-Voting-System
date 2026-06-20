@@ -107,3 +107,22 @@ function verifyOTP() {
         showToast("Wrong OTP", "error");
     }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const sendOtpBtn = document.getElementById("sendOtpBtn");
+    const verifyOtpBtn = document.getElementById("verifyOtpBtn");
+    const adminBtn = document.getElementById("adminBtn");
+
+    if (sendOtpBtn) {
+        sendOtpBtn.addEventListener("click", sendOTP);
+    }
+
+    if (verifyOtpBtn) {
+        verifyOtpBtn.addEventListener("click", verifyOTP);
+    }
+
+    if (adminBtn) {
+        adminBtn.addEventListener("click", adminLogin);
+    }
+});

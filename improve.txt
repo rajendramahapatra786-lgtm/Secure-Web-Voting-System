@@ -1,26 +1,5 @@
 
 
-7️⃣ Inline onclick Usage ❌
-
-Current:
-
-onclick="vote('BJP')"
-
-Problem:
-❌ Old-style JavaScript
-❌ Harder debugging
-❌ Not scalable
-
-✅ BETTER
-
-Use:
-
-addEventListener()
-
-Professional frontend approach.
-
----
-
 8️⃣ Repeated Validation Logic ❌
 
 Current:

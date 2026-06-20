@@ -47,7 +47,7 @@ function showVotingStatus() {
     }
 }
 
-window.onload = showVotingStatus;
+// window.onload = showVotingStatus;
 
 
 
@@ -101,3 +101,32 @@ function vote(candidate) {
         .forEach(btn => btn.disabled = true);
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+
+    showVotingStatus();
+
+    const toggleBtn = document.getElementById("toggleVotingBtn");
+    const restartBtn = document.getElementById("restartVotingBtn");
+    const manageBtn = document.getElementById("managePageBtn");
+
+    if (toggleBtn) {
+        toggleBtn.addEventListener("click", toggleVoting);
+    }
+
+    if (restartBtn) {
+        restartBtn.addEventListener("click", restartVoting);
+    }
+
+    if (manageBtn) {
+        manageBtn.addEventListener("click", openManagePage);
+    }
+
+    const voteButtons = document.querySelectorAll(".party-btn");
+
+    voteButtons.forEach(button => {
+        button.addEventListener("click", function () {
+            const party = this.dataset.party;
+            vote(party);
+        });
+    });
+});

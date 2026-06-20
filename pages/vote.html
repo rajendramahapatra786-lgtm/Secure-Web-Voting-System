@@ -13,32 +13,33 @@
         <h2>Cast Your Vote</h2>
 
         <!-- ✅ Admin Access Button -->
-        <button onclick="adminLogin()" class="admin-btn">
+        <button id="adminBtn" class="admin-btn">
             Admin Panel
         </button>
 
         <!-- ✅ Hidden Admin Controls -->
         <div id="adminPanel" style="display:none; margin-top:15px;">
-            <button onclick="toggleVoting()">Toggle Voting</button>
-            <button onclick="restartVoting()">Restart Voting</button>
-            <button type="button" onclick="openManagePage()">Manage Voters</button>
+            <button id="toggleVotingBtn">Toggle Voting</button>
+            <button id="restartVotingBtn">Restart Voting</button>
+            <button type="button" id="managePageBtn">Manage Voters</button>
         </div>
 
         <!-- ✅ Voting Status Message -->
         <p id="statusMessage"></p>
 
         <!-- ✅ Voting Buttons -->
-        <button class="party-btn" onclick="vote('BJP')">
+        <button class="party-btn" data-party="BJP">
             <span>BJP</span>
             <img src="https://images.seeklogo.com/logo-png/2/1/bjp-logo-png_seeklogo-20002.png">
         </button>
 
-        <button class="party-btn" onclick="vote('BJD')">
+        <button class="party-btn" data-party="BJD">
             <span>BJD</span>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Biju_Janata_Dal_logo.svg/330px-Biju_Janata_Dal_logo.svg.png">
+            <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Biju_Janata_Dal_logo.svg/330px-Biju_Janata_Dal_logo.svg.png">
         </button>
 
-        <button class="party-btn" onclick="vote('Congress')">
+        <button class="party-btn" data-party="Congress">
             <span>Congress</span>
             <img src="https://images.seeklogo.com/logo-png/46/1/indian-national-congress-logo-png_seeklogo-466896.png">
         </button>
@@ -49,32 +50,32 @@
     </div>
 
     <!-- Toast Container -->
-<div id="toastContainer"></div>
+    <div id="toastContainer"></div>
 
-<!-- Custom Modal -->
-<div id="customModal" class="custom-modal">
-    <div class="modal-box">
+    <!-- Custom Modal -->
+    <div id="customModal" class="custom-modal">
+        <div class="modal-box">
 
-        <h3 id="modalTitle">Alert</h3>
+            <h3 id="modalTitle">Alert</h3>
 
-        <p id="modalMessage"></p>
+            <p id="modalMessage"></p>
 
-        <div id="modalInputArea"></div>
+            <div id="modalInputArea"></div>
 
-        <div class="modal-buttons">
-            <button id="modalOkBtn">OK</button>
-            <button id="modalCancelBtn">Cancel</button>
+            <div class="modal-buttons">
+                <button id="modalOkBtn">OK</button>
+                <button id="modalCancelBtn">Cancel</button>
+            </div>
+
         </div>
-
     </div>
-</div>
 
 
-<script src="../js/storage.js"></script>
-<script src="../js/vote.js"></script> 
-<script src="../js/auth.js"></script>
-<script src="../js/ui.js"></script>
-<script src="../js/admin.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/vote.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/ui.js"></script>
+    <script src="../js/admin.js"></script>
 
 
 </body>

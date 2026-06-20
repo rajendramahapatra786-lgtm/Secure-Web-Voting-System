@@ -1,69 +1,73 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Voting Login</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1828/1828919.png">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 </head>
+
 <body>
 
-<div class="box">
-    <h2>🗳️ Voting Login</h2>
-    <p class="subtitle">Secure Access Portal</p>
+    <div class="box">
+        <h2>🗳️ Voting Login</h2>
+        <p class="subtitle">Secure Access Portal</p>
 
-    <div class="input-group">
-        <i class="fa fa-user"></i>
-        <input type="text" id="username" placeholder="Username">
-    </div>
-
-    <div class="input-group">
-        <i class="fa fa-phone"></i>
-        <input type="tel" id="mobile" maxlength="10" placeholder="Mobile Number">
-    </div>
-
-    <button onclick="sendOTP()">Send OTP</button>
-
-    <div id="otpBox" class="otp-box">
         <div class="input-group">
-            <i class="fa fa-lock"></i>
-            <input type="text" id="otp" placeholder="Enter OTP">
-        </div>
-        <button onclick="verifyOTP()">Verify OTP</button>
-    </div>
-
-    <p id="msg"></p>
-</div>
-
-<!-- Toast Container -->
-<div id="toastContainer"></div>
-
-<!-- Custom Modal -->
-<div id="customModal" class="custom-modal">
-    <div class="modal-box">
-
-        <h3 id="modalTitle">Alert</h3>
-
-        <p id="modalMessage"></p>
-
-        <div id="modalInputArea"></div>
-
-        <div class="modal-buttons">
-            <button id="modalOkBtn">OK</button>
-            <button id="modalCancelBtn">Cancel</button>
+            <i class="fa fa-user"></i>
+            <input type="text" id="username" placeholder="Username">
         </div>
 
+        <div class="input-group">
+            <i class="fa fa-phone"></i>
+            <input type="tel" id="mobile" maxlength="10" placeholder="Mobile Number">
+        </div>
+
+        <button id="sendOtpBtn">Send OTP</button>
+
+
+        <div id="otpBox" class="otp-box">
+            <div class="input-group">
+                <i class="fa fa-lock"></i>
+                <input type="text" id="otp" placeholder="Enter OTP">
+            </div>
+            <button id="verifyOtpBtn">Verify OTP</button>
+        </div>
+
+        <p id="msg"></p>
     </div>
-</div>
+
+    <!-- Toast Container -->
+    <div id="toastContainer"></div>
+
+    <!-- Custom Modal -->
+    <div id="customModal" class="custom-modal">
+        <div class="modal-box">
+
+            <h3 id="modalTitle">Alert</h3>
+
+            <p id="modalMessage"></p>
+
+            <div id="modalInputArea"></div>
+
+            <div class="modal-buttons">
+                <button id="modalOkBtn">OK</button>
+                <button id="modalCancelBtn">Cancel</button>
+            </div>
+
+        </div>
+    </div>
 
 
-<footer class="footer">
-    © Developed by Rajendra
-</footer>
+    <footer class="footer">
+        © Developed by Rajendra
+    </footer>
 
-<script src="js/storage.js"></script>
-<script src="js/auth.js"></script>
-<script src="js/ui.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/ui.js"></script>
 
 </body>
+
 </html>

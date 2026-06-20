@@ -91,3 +91,14 @@ function restartVoting() {
 }
 
 
+document.addEventListener("DOMContentLoaded", () => {
+
+    loadVoters();
+
+    const deleteBtn = document.getElementById("deleteBtn");
+
+    if (deleteBtn) {
+        deleteBtn.addEventListener("click", deleteSelected);
+    }
+});
+
