@@ -3,33 +3,35 @@
 function loadVoters() {
 
     const body = document.getElementById("voterTableBody");
+
     if (!body) return;
 
     let list = getVoterList();
+
+    body.innerHTML = "";
 
     if (list.length === 0) {
         body.innerHTML = "<tr><td colspan='6'>No voters found</td></tr>";
         return;
     }
 
-    let html = "";
-
     list.forEach((v, i) => {
-        html += `
-            <tr>
-                <td>${i + 1}</td>   <!-- User ID -->
-                <td>${v.user}</td>
-                <td>${v.mobile}</td>
-                <td>${v.candidate}</td>
-                <td>${v.time}</td>
-                <td>
-                    <input type="checkbox" value="${i}" class="voterCheck">
-                </td>
-            </tr>
-        `;
-    });
 
-    body.innerHTML = html;
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+            <td>${i + 1}</td>
+            <td>${v.user}</td>
+            <td>${v.mobile}</td>
+            <td>${v.candidate}</td>
+            <td>${v.time}</td>
+            <td>
+                <input type="checkbox" value="${i}" class="voterCheck">
+            </td>
+        `;
+
+        body.appendChild(row);
+    });
 }
 
 
@@ -60,7 +62,10 @@ function deleteSelected() {
     saveVotes(votes);
 
     showToast("Selected voters removed ✅", "success");
-    location.reload();
+
+    document.getElementById("voterTableBody").innerHTML = "";
+
+    loadVoters();
 }
 
 
@@ -70,11 +75,7 @@ function restartVoting() {
 
     if (!confirm("Restart voting?")) return;
 
-    saveVotes({
-        BJP: 0,
-        BJD: 0,
-        Congress: 0
-    });
+    saveVotes(DEFAULT_VOTES);
 
     saveVoterList([]);
     for (let key in localStorage) {
@@ -87,7 +88,9 @@ function restartVoting() {
 
     showToast("Voting restarted!", "success");
 
-    location.reload();
+    setTimeout(() => {
+        location.reload();
+    }, 1000);
 }
 
 

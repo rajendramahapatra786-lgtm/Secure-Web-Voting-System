@@ -1,40 +1,57 @@
+const AUTH_STATE = {
+    generatedOTP: null
+};
+
 // ================= USER LOGIN =============================
 
 function login() {
     const user = document.getElementById("username").value.trim();
+    const msg = document.getElementById("msg");
 
-    if (user === "") {
-        document.getElementById("msg").innerText = "Please enter username";
+    const nameError = validateInput(
+        user,
+        /^[A-Za-z ]+$/,
+        "Enter valid name"
+    );
+
+    if (nameError) {
+        msg.innerText = nameError;
         return;
     }
 
-    // ✅ name validation
-    if (!/^[A-Za-z ]+$/.test(user)) {
-        document.getElementById("msg").innerText = "Name must contain only letters";
-        return;
-    }
-
-    localStorage.setItem("currentUser", user);
+    localStorage.setItem(STORAGE_KEYS.CURRENT_USER, user);
     window.location.href = "pages/vote.html";
 }
 
+function validateInput(value, regex, message) {
+    if (!value.trim()) {
+        return message;
+    }
+
+    if (regex && !regex.test(value)) {
+        return message;
+    }
+
+    return null;
+}
+
 // allow only letters & spaces in username while typing
-document.addEventListener("DOMContentLoaded", () => {
+function initNameValidation() {
     const nameInput = document.getElementById("username");
 
     if (nameInput) {
         nameInput.addEventListener("input", function () {
-            this.value = this.value.replace(/[^A-Za-z ]/g, '');
+            this.value = this.value.replace(/[^A-Za-z ]/g, "");
         });
     }
-});
+}
 
 // ================= ADMIN LOGIN =================
 
 function adminLogin() {
     const password = prompt("Enter Admin Password:");
 
-    if (password === "admin123") {
+    if (password === ADMIN_CONFIG.PASSWORD){
         document.getElementById("adminPanel").style.display = "block";
         alert("Admin access granted");
     } else {
@@ -43,15 +60,15 @@ function adminLogin() {
 }
 
 // allow only numbers in mobile field (after page loads)
-document.addEventListener("DOMContentLoaded", () => {
+function initMobileValidation() {
     const mobileInput = document.getElementById("mobile");
 
     if (mobileInput) {
         mobileInput.addEventListener("input", function () {
-            this.value = this.value.replace(/[^0-9]/g, '');
+            this.value = this.value.replace(/[^0-9]/g, "");
         });
     }
-});
+}
 
 
 // ================= OTP SYSTEM =================
@@ -64,27 +81,40 @@ function sendOTP() {
     const mobile = document.getElementById("mobile").value.trim();
     const msg = document.getElementById("msg");
 
-    if (user === "" || mobile === "") {
-        msg.innerText = "Enter name & mobile";
+    const nameError = validateInput(
+        user,
+        /^[A-Za-z ]+$/,
+        "Enter valid name"
+    );
+
+    if (nameError) {
+        msg.innerText = nameError;
         return;
     }
 
-    // ✅ mobile validation (10 digits only)
-    if (!/^[0-9]{10}$/.test(mobile)) {
-        msg.innerText = "Enter valid 10-digit mobile number";
+    const mobileError = validateInput(
+        mobile,
+        /^[0-9]{10}$/,
+        "Enter valid 10-digit mobile number"
+    );
+
+    if (mobileError) {
+        msg.innerText = mobileError;
         return;
     }
 
     // prevent duplicate voting
-    if (localStorage.getItem("votedMobile_" + mobile)) {
+    if (localStorage.getItem(STORAGE_KEYS.VOTED_MOBILE + mobile)) {
         showToast("You already voted!", "warning");
-         return;
+        return;
     }
 
     // generate OTP
-    generatedOTP = Math.floor(1000 + Math.random() * 9000);
+    AUTH_STATE.generatedOTP = Math.floor(
+    1000 + Math.random() * 9000
+);
 
-    msg.innerText = "🔐 Demo OTP: " + generatedOTP;
+    msg.innerText = "🔐 Demo OTP: " + AUTH_STATE.generatedOTP;
 
     // show OTP box
     document.getElementById("otpBox").classList.add("show");
@@ -96,10 +126,10 @@ function verifyOTP() {
     const user = document.getElementById("username").value.trim();
     const mobile = document.getElementById("mobile").value.trim();
 
-    if (enteredOTP == generatedOTP) {
+    if (enteredOTP == AUTH_STATE.generatedOTP) {
 
-        localStorage.setItem("currentUser", user);
-        localStorage.setItem("currentMobile", mobile);
+        localStorage.setItem(STORAGE_KEYS.CURRENT_USER, user);
+        localStorage.setItem(STORAGE_KEYS.CURRENT_MOBILE, mobile);
 
         window.location.href = "pages/vote.html";
 
@@ -108,8 +138,7 @@ function verifyOTP() {
     }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-
+function initButtons() {
     const sendOtpBtn = document.getElementById("sendOtpBtn");
     const verifyOtpBtn = document.getElementById("verifyOtpBtn");
     const adminBtn = document.getElementById("adminBtn");
@@ -125,4 +154,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (adminBtn) {
         adminBtn.addEventListener("click", adminLogin);
     }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    initNameValidation();
+    initMobileValidation();
+    initButtons();
 });

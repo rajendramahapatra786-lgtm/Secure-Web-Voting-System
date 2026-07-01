@@ -4,8 +4,8 @@ function openManagePage() {
     window.location.href = "../pages/manage.html";
 }
 
-// ================= TOGGLE VOTING =================
 
+// ================= TOGGLE VOTING =================
 function toggleVoting() {
 
     let status = getVotingStatus();
@@ -14,13 +14,13 @@ function toggleVoting() {
         setVotingStatus("OFF");
         showToast("🚫 Voting CLOSED", "warning");
     } else {
-        setVotingStatus("ON"); 
+        setVotingStatus("ON");
         showToast("✅ Voting OPEN", "success");
     }
 
-    location.reload();
+    // update UI without reload
+    showVotingStatus();
 }
-
 
 
 // ================= SHOW VOTING STATUS =================
@@ -40,15 +40,56 @@ function showVotingStatus() {
         msg.style.color = "green";
     }
 
-    const user = localStorage.getItem("currentUser");
-    if (localStorage.getItem("voted_" + user)) {
+    const user = localStorage.getItem(STORAGE_KEYS.CURRENT_USER);
+
+    if (localStorage.getItem(STORAGE_KEYS.VOTED_USER + user)) {
         document.querySelectorAll(".party-btn")
             .forEach(btn => btn.disabled = true);
     }
 }
 
-// window.onload = showVotingStatus;
 
+// ================= HELPER FUNCTIONS =================
+
+// check if user already voted
+function hasUserVoted(user) {
+    return localStorage.getItem(STORAGE_KEYS.VOTED_USER + user);
+}
+
+
+// save vote count
+function saveVote(candidate) {
+
+    let votes = getVotes();
+
+    votes[candidate]++;
+
+    saveVotes(votes);
+}
+
+
+// save voter record for admin page
+function saveVoterRecord(user, mobile, candidate) {
+
+    let voterList = getVoterList();
+
+    voterList.push({
+        user: user,
+        mobile: mobile,
+        candidate: candidate,
+        time: new Date().toLocaleString()
+    });
+
+    saveVoterList(voterList);
+}
+
+
+// disable vote buttons after vote
+function disableVoteButtons() {
+
+    document.querySelectorAll(".party-btn")
+        .forEach(btn => btn.disabled = true);
+}
 
 
 // ================= CAST VOTE =================
@@ -60,8 +101,8 @@ function vote(candidate) {
         return;
     }
 
-    const user = localStorage.getItem("currentUser");
-    const mobile = localStorage.getItem("currentMobile");
+    const user = localStorage.getItem(STORAGE_KEYS.CURRENT_USER);
+    const mobile = localStorage.getItem(STORAGE_KEYS.CURRENT_MOBILE);
 
     if (!user) {
         showToast("Please login first", "error");
@@ -69,37 +110,28 @@ function vote(candidate) {
         return;
     }
 
-    if (localStorage.getItem("voted_" + user)) {
+    if (hasUserVoted(user)) {
         document.getElementById("msg").innerText = "You already voted!";
         return;
     }
 
     // update vote count
-    let votes = getVotes();
+    saveVote(candidate);
 
-    votes[candidate]++;
+    // save duplicate protection
+    localStorage.setItem(STORAGE_KEYS.VOTED_USER + user, candidate);
+    localStorage.setItem(STORAGE_KEYS.VOTED_MOBILE + mobile, "yes");
 
-    saveVotes(votes);
-    localStorage.setItem("voted_" + user, candidate);
-    localStorage.setItem("votedMobile_" + mobile, "yes");
-
-    // store voter info for admin page
-    let voterList = getVoterList();
-
-    voterList.push({
-        user: user,
-        mobile: mobile,
-        candidate: candidate,
-        time: new Date().toLocaleString()
-    });
-
-    saveVoterList(voterList);
+    // save voter info
+    saveVoterRecord(user, mobile, candidate);
 
     document.getElementById("msg").innerText = "✅ Vote recorded!";
 
-    document.querySelectorAll(".party-btn")
-        .forEach(btn => btn.disabled = true);
+    disableVoteButtons();
 }
+
+
+// ================= PAGE LOAD =================
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -129,4 +161,5 @@ document.addEventListener("DOMContentLoaded", () => {
             vote(party);
         });
     });
+
 });
