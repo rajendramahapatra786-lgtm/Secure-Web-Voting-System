@@ -1,19 +1,7 @@
 
 🔥 BEST FEATURES YOU SHOULD ADD NOW
 
----
 
-✅ Search Voters
-
-Search by:
-
-- name
-- mobile
-- party
-
-Very useful admin feature.
-
----
 
 ✅ Filter Votes
 

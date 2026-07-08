@@ -14,7 +14,26 @@
 
     <div class="box manage-box">
 
-        <h2>Voter List</h2>
+        <div class="table-header">
+
+            <div class="title-box">
+                <div class="title-icon">
+                    👥
+                </div>
+
+                <h2>Voter List</h2>
+            </div>
+
+            <div class="search-box">
+
+                <span class="search-icon">🔍</span>
+
+                <input type="search" id="searchInput" placeholder="Search by Name, Mobile or Party..."
+                    autocomplete="off">
+
+            </div>
+
+        </div>
 
         <div class="table-box">
             <table class="voter-table">
@@ -44,34 +63,35 @@
     </div>
 
     <!-- Toast Container -->
-<div id="toastContainer"></div>
+    <div id="toastContainer"></div>
 
-<!-- Custom Modal -->
-<div id="customModal" class="custom-modal">
-    <div class="modal-box">
+    <!-- Custom Modal -->
+    <div id="customModal" class="custom-modal">
+        <div class="modal-box">
 
-        <h3 id="modalTitle">Alert</h3>
+            <h3 id="modalTitle">Alert</h3>
 
-        <p id="modalMessage"></p>
+            <p id="modalMessage"></p>
 
-        <div id="modalInputArea"></div>
+            <div id="modalInputArea"></div>
 
-        <div class="modal-buttons">
-            <button id="modalOkBtn">OK</button>
-            <button id="modalCancelBtn">Cancel</button>
+            <div class="modal-buttons">
+                <button id="modalOkBtn">OK</button>
+                <button id="modalCancelBtn">Cancel</button>
+            </div>
+
         </div>
-
     </div>
-</div>
 
 
-<script src="../js/storage.js"></script>
-<script src="../js/admin.js"></script>
-<script src="../js/ui.js"></script>
-    
+    <script src="../js/storage.js"></script>
+    <script src="../js/admin.js"></script>
+    <script src="../js/ui.js"></script>
+
     <!-- <script>
         loadVoters();
     </script> -->
 
 </body>
+
 </html>

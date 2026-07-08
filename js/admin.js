@@ -23,7 +23,7 @@ function loadVoters() {
             <td>${i + 1}</td>
             <td>${v.user}</td>
             <td>${v.mobile}</td>
-            <td>${v.candidate}</td>
+            <td class="party ${v.candidate.toLowerCase()}"> ${v.candidate}</td>
             <td>${v.time}</td>
             <td>
                 <input type="checkbox" value="${i}" class="voterCheck">
@@ -34,6 +34,46 @@ function loadVoters() {
     });
 }
 
+
+// ================= SEARCH VOTERS =================
+
+function searchVoters() {
+
+    const searchInput = document.getElementById("searchInput");
+
+    if (!searchInput) return;
+
+    searchInput.addEventListener("input", function () {
+
+        const keyword = this.value.trim().toLowerCase();
+
+        const rows = document.querySelectorAll("#voterTableBody tr");
+
+        rows.forEach(row => {
+
+            const cells = row.querySelectorAll("td");
+
+            if (cells.length === 0) return;
+
+            const user = cells[1].textContent.toLowerCase();
+            const mobile = cells[2].textContent.toLowerCase();
+            const party = cells[3].textContent.toLowerCase();
+
+            if (
+                user.includes(keyword) ||
+                mobile.includes(keyword) ||
+                party.includes(keyword)
+            ) {
+                row.style.display = "";
+            } else {
+                row.style.display = "none";
+            }
+
+        });
+
+    });
+
+}
 
 // ================= DELETE SELECTED VOTERS =================
 
@@ -97,6 +137,7 @@ function restartVoting() {
 document.addEventListener("DOMContentLoaded", () => {
 
     loadVoters();
+    searchVoters();
 
     const deleteBtn = document.getElementById("deleteBtn");
 
