@@ -28,16 +28,17 @@ body {
 ================================================= */
 
 .box {
-    width: 320px;
+    width: 500px;
     max-width: 95%;
-    padding: 35px 25px;
+    padding: 40px 35px;
     border-radius: 20px;
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255,255,255,.15);
     backdrop-filter: blur(12px);
     text-align: center;
     color: white;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 8px 32px rgba(0,0,0,.25);
     animation: fadeIn .6s ease-in-out;
+    margin:20px auto;
 }
 
 
@@ -47,8 +48,8 @@ body {
 ================================================= */
 
 h2 {
-    margin-bottom: 20px;
-    font-weight: 600;
+    margin-bottom: 30px;
+    font-size:38px;
 }
 
 .subtitle {
@@ -197,36 +198,169 @@ button:hover::after {
     filter: grayscale(40%);
 }
 
+/* ===========================================
+           RESULT PAGE
+===========================================*/
 
-
-/* =================================================
-   📊 RESULT PAGE
-================================================= */
-
-.result-box {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.25);
-    padding: 12px 15px;
-    border-radius: 12px;
-    margin: 10px 0;
-    font-size: 16px;
+.box{
+    width: 600px;
+    max-width: 92%;
+    padding:35px 35px;
+    border-radius:30px;
+    background:rgba(255,255,255,.15);
+    backdrop-filter:blur(18px);
+    box-shadow:0 15px 45px rgba(0,0,0,.25);
 }
 
-.percent {
-    font-weight: bold;
+.box h2{
+    font-size:44px;
+    margin:0;
+    font-weight:700;
+    color:white;
 }
 
-.winner-box {
-    background: linear-gradient(45deg, #00f5a0, #00d9f5);
-    color: #003;
-    font-weight: bold;
-    transform: scale(1.03);
+.title-divider{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
+    margin:30px 0 45px;
+    color:white;
+    font-size:26px;
+    opacity:.9;
 }
 
-#statusText {
-    margin-top: 10px;
+.title-divider span{
+    width:170px;
+    height:2px;
+    background:rgba(255,255,255,.35);
+}
+
+.result-box{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px 22px;
+    border-radius:22px;
+    margin:16px 0;
+    background:rgba(255,255,255,.18);
+    transition:.35s;
+}
+
+.result-box:hover{
+
+    transform:translateY(-3px);
+
+    background:rgba(255,255,255,.24);
+
+}
+
+.party-info{
+
+    display:flex;
+    align-items:center;
+    gap:22px;
+
+}
+
+.party-logo{
+
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    object-fit:cover;
+    background:white;
+    padding:6px;
+
+}
+
+.party-name{
+
+    font-size:22px;
+    font-weight:700;
+    color:white;
+
+}
+
+.party-result{
+
+    display:flex;
+    align-items:center;
+    gap:25px;
+
+}
+
+.party-result b{
+
+    font-size:26px;
+    color:white;
+
+}
+
+.vertical-line{
+
+    width:2px;
+    height:42px;
+    background:rgba(255,255,255,.35);
+
+}
+
+.percent{
+
+    font-size:22px;
+    font-weight:700;
+    color:white;
+
+}
+
+.winner-box{
+
+    background:linear-gradient(90deg,#00f5a0,#15d4ff);
+    color:black;
+    box-shadow:0 10px 25px rgba(0,245,160,.45);
+
+}
+
+.winner-box .party-name,
+.winner-box b,
+.winner-box .percent{
+
+    color:black;
+
+}
+
+#statusText{
+    margin:30px 0 20px;
+    font-size:26px;
+    font-weight:700;
+    color:white;
+}
+
+hr{
+
+    border:none;
+    height:1px;
+    background:rgba(255,255,255,.18);
+    margin:35px 0;
+
+}
+
+.back-btn{
+
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    font-size:20px;
+    color:white;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.back-btn:hover{
+
+    transform:translateX(-6px);
+
 }
 
 

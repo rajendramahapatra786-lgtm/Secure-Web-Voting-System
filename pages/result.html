@@ -10,60 +10,108 @@
 <body>
 
     <div class="box">
+
         <h2>Voting Results</h2>
 
-        <!-- RESULT BOXES -->
+        <div class="title-divider">
+            <span></span>
+            ★
+            <span></span>
+        </div>
+
+        <!-- BJP -->
         <div class="result-box" id="bjpBox">
-            <span>BJP : <b id="bjpVotes">0</b></span>
-            <span class="percent" id="bjpPercent">0%</span>
+
+            <div class="party-info">
+                <img src="../assets/images/bjp.png" class="party-logo">
+                <span class="party-name">BJP</span>
+            </div>
+
+            <div class="party-result">
+                <b id="bjpVotes">0</b>
+
+                <div class="vertical-line"></div>
+
+                <span class="percent" id="bjpPercent">0%</span>
+            </div>
+
         </div>
 
+        <!-- BJD -->
         <div class="result-box" id="bjdBox">
-            <span>BJD : <b id="bjdVotes">0</b></span>
-            <span class="percent" id="bjdPercent">0%</span>
+
+            <div class="party-info">
+                <img src="../assets/images/bjd.png" class="party-logo">
+                <span class="party-name">BJD</span>
+            </div>
+
+            <div class="party-result">
+                <b id="bjdVotes">0</b>
+
+                <div class="vertical-line"></div>
+
+                <span class="percent" id="bjdPercent">0%</span>
+            </div>
+
         </div>
 
+        <!-- Congress -->
         <div class="result-box" id="conBox">
-            <span>Congress : <b id="conVotes">0</b></span>
-            <span class="percent" id="conPercent">0%</span>
+
+            <div class="party-info">
+                <img src="../assets/images/congress.png" class="party-logo">
+                <span class="party-name">Congress</span>
+            </div>
+
+            <div class="party-result">
+                <b id="conVotes">0</b>
+
+                <div class="vertical-line"></div>
+
+                <span class="percent" id="conPercent">0%</span>
+            </div>
+
         </div>
 
-        <!-- STATUS MESSAGE -->
         <p id="statusText"></p>
 
-        <br>
-        <a href="../index.html">Back to Login</a>
+        <hr>
+
+        <a class="back-btn" href="../index.html">
+            ← Back to Login
+        </a>
+
     </div>
 
     <!-- Toast Container -->
-<div id="toastContainer"></div>
+    <div id="toastContainer"></div>
 
-<!-- Custom Modal -->
-<div id="customModal" class="custom-modal">
-    <div class="modal-box">
+    <!-- Custom Modal -->
+    <div id="customModal" class="custom-modal">
+        <div class="modal-box">
 
-        <h3 id="modalTitle">Alert</h3>
+            <h3 id="modalTitle">Alert</h3>
 
-        <p id="modalMessage"></p>
+            <p id="modalMessage"></p>
 
-        <div id="modalInputArea"></div>
+            <div id="modalInputArea"></div>
 
-        <div class="modal-buttons">
-            <button id="modalOkBtn">OK</button>
-            <button id="modalCancelBtn">Cancel</button>
+            <div class="modal-buttons">
+                <button id="modalOkBtn">OK</button>
+                <button id="modalCancelBtn">Cancel</button>
+            </div>
+
         </div>
-
     </div>
-</div>
 
 
-<script src="../js/storage.js"></script>
-<script src="../js/result.js"></script>
-<script src="../js/confetti.js"></script>
-<script src="../js/ui.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/result.js"></script>
+    <script src="../js/confetti.js"></script>
+    <script src="../js/ui.js"></script>
 
     <canvas id="confetti"></canvas>
-    
+
 </body>
 
 </html>
