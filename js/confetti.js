@@ -50,3 +50,47 @@ function startConfetti() {
         canvas.style.display = "none";
     }, 4000);
 }
+
+// =========================
+// FIREWORKS
+// =========================
+
+let fireworks;
+
+function startFireworks() {
+    const container = document.getElementById("fireworks");
+    if (!container) return;
+
+    if (!fireworks) {
+        fireworks = new Fireworks.default(container, {
+            rocketsPoint: {
+                min: 10,
+                max: 90
+            },
+            hue: {
+                min: 0,
+                max: 360
+            },
+            delay: {
+                min: 15,
+                max: 30
+            },
+            speed: 3,
+            acceleration: 1.05,
+            friction: 0.95,
+            gravity: 1.2,
+            particles: 80,
+            traceLength: 4,
+            traceSpeed: 10,
+            explosion: 6,
+            autoresize: true
+        });
+    }
+
+    fireworks.start();
+
+    // Stop after 4 seconds
+    setTimeout(() => {
+        fireworks.stop();
+    }, 4000);
+}

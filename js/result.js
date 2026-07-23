@@ -50,9 +50,10 @@ function updateResults() {
 
             statusText.innerHTML = "🏆 Voting Finished";
 
-            // 🎊 start confetti AFTER winner appears
+            // 🎊 Winner celebration
             setTimeout(() => {
                 startConfetti();
+                startFireworks();
             }, 300);
         }
 
