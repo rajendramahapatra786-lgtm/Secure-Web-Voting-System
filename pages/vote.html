@@ -2,14 +2,25 @@
 <html>
 
 <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Vote</title>
-    <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/vote.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1828/1828919.png">
+
 </head>
 
 <body>
 
-    <div class="box">
+    <div class="vote-box">
         <h2>Cast Your Vote</h2>
 
         <!-- ✅ Admin Access Button -->
@@ -34,16 +45,16 @@
         </button>
 
         <button class="party-btn" data-party="BJD">
-            <span>BJD   </span>
+            <span>BJD </span>
             <img src="../assets/images/bjd.png" class="party-logo" alt="BJD">
         </button>
 
         <button class="party-btn" data-party="Congress">
             <span>Congress</span>
-           <img src="../assets/images/congress.png" class="party-logo" alt="Congress">
+            <img src="../assets/images/congress.png" class="party-logo" alt="Congress">
         </button>
 
-        <p id="msg"></p>
+        <p id="msg" aria-live="polite"></p>
 
         <a href="result.html">View Results </a>
     </div>

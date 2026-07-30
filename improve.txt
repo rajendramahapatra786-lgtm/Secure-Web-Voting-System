@@ -1,15 +1,5 @@
 
-✅ Better Admin Dashboard
 
-Add:
-
-✅ statistics cards
-✅ total voters
-✅ live turnout
-✅ winner preview
-✅ activity logs
-
----
 
 ✅ Responsive Manage Table
 

@@ -2,14 +2,20 @@
 <html>
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Voting Results</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/result.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/responsive.css">
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1828/1828919.png">
 </head>
 
 <body>
 
-    <div class="box">
+    <div class="result-box-container">
 
         <h2>Voting Results</h2>
 
@@ -23,7 +29,7 @@
         <div class="result-box" id="bjpBox">
 
             <div class="party-info">
-                <img src="../assets/images/bjp.png" class="party-logo">
+                <img src="../assets/images/bjp.png" class="party-logo" alt="BJP Logo">
                 <span class="party-name">BJP</span>
             </div>
 
@@ -42,7 +48,6 @@
 
             <div class="party-info">
                 <img src="../assets/images/bjd.png" class="party-logo">
-                <span class="party-name">BJD</span>
             </div>
 
             <div class="party-result">
@@ -60,7 +65,6 @@
 
             <div class="party-info">
                 <img src="../assets/images/congress.png" class="party-logo">
-                <span class="party-name">Congress</span>
             </div>
 
             <div class="party-result">
@@ -73,7 +77,7 @@
 
         </div>
 
-        <p id="statusText"></p>
+        <p id="statusText" aria-live="polite"></p>
 
         <hr>
 

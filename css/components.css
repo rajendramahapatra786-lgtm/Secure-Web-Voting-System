@@ -1,0 +1,140 @@
+/* ==========================================
+   FOOTER
+========================================== */
+
+.footer {
+    position: fixed;
+    bottom: 15px;
+    width: 100%;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 14px;
+}
+
+
+/* ==========================================
+   TOAST
+========================================== */
+
+#toastContainer {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+.toast {
+    background: rgba(0, 0, 0, 0.9);
+    color: #00ffff;
+    border-left: 4px solid #00ffff;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    min-width: 250px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+    font-weight: bold;
+    animation: slideIn .4s ease;
+    transition: all .5s ease;
+}
+
+.toast.success {
+    border-color: #00ff00;
+    color: #00ff00;
+}
+
+.toast.error {
+    border-color: #ff0033;
+    color: #ff0033;
+}
+
+.toast.warning {
+    border-color: #ffaa00;
+    color: #ffaa00;
+}
+
+
+/* ==========================================
+   MODAL
+========================================== */
+
+.custom-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .85);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+.modal-box {
+    width: 350px;
+    padding: 30px;
+    text-align: center;
+    border-radius: 10px;
+    background: #111;
+    border: 2px solid #00ffff;
+    box-shadow: 0 0 25px rgba(0,255,255,.5);
+}
+
+.modal-box h3 {
+    margin-bottom: 15px;
+    color: #00ffff;
+}
+
+.modal-box p {
+    margin-bottom: 20px;
+    color: white;
+}
+
+.modal-box input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #00ffff;
+    background: #000;
+    color: white;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.modal-buttons button {
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+#modalOkBtn {
+    background: #00ffff;
+}
+
+#modalCancelBtn {
+    background: #ff0033;
+    color: white;
+}
+
+
+/* ==========================================
+   EFFECTS
+========================================== */
+
+#fireworks {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+#confetti {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9998;
+}

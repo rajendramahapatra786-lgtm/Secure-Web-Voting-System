@@ -1,0 +1,49 @@
+/* ==========================================
+   LOGIN PAGE
+========================================== */
+
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    padding:20px;
+}
+
+.login-box {
+    width: 500px;
+    max-width: 95%;
+    padding: 40px 35px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, .15);
+    backdrop-filter: blur(12px);
+    text-align: center;
+    color: white;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, .25);
+    animation: fadeIn .6s ease-in-out;
+    margin: 20px auto;
+}
+
+.login-box h2 {
+    margin-bottom: 30px;
+    font-size: 38px;
+}
+
+.subtitle {
+    font-size: 13px;
+    opacity: .85;
+    margin-bottom: 15px;
+}
+
+#msg {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.otp-box {
+    display: none;
+}
+
+.otp-box.show {
+    display: block;
+}
