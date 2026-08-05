@@ -26,12 +26,34 @@ function loadVoters() {
             <td class="party ${v.candidate.toLowerCase()}"> ${v.candidate}</td>
             <td>${v.time}</td>
             <td>
-                <input type="checkbox" value="${i}" class="voterCheck">
+                <input
+    type="checkbox"
+    value="${i}"
+    class="voterCheck"
+    onchange="updateDeleteButton()"
+>
             </td>
         `;
 
         body.appendChild(row);
     });
+    updateDeleteButton();
+}
+// =================== update delet button ================
+function updateDeleteButton() {
+
+    const deleteBtn = document.getElementById("deleteBtn");
+
+    if (!deleteBtn) return;
+
+    const count = document.querySelectorAll(".voterCheck:checked").length;
+
+    if (count === 0) {
+        deleteBtn.textContent = "🗑 Delete Selected";
+    } else {
+        deleteBtn.textContent = `🗑 Delete Selected (${count})`;
+    }
+
 }
 
 
